@@ -1,6 +1,6 @@
 # Base image allows for configurable versions
-ARG BASE_VERSION=latest
-FROM ghcr.io/kairos-io/hadron:${BASE_VERSION}
+ARG BASE_VERSION="quay.io/kairos/alpine:3.20-core-amd64-generic-v3.2.1"
+FROM ${BASE_VERSION}
 
 # Ensure /etc/kairos directory exists
 RUN mkdir -p /etc/kairos
