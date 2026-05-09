@@ -1,0 +1,11 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: authentik
+  namespace: kube-system
+spec:
+  chartName: authentik/authentik
+  version: "2023.10.4"
+  namespace: authentik
+  repository:
+    url: https://charts.goauthentik.io

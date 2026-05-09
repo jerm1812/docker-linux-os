@@ -1,0 +1,11 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: kafka
+  namespace: kube-system
+spec:
+  chartName: bitnami/kafka
+  version: "26.8.0"
+  namespace: kafka
+  repository:
+    url: https://charts.bitnami.com/bitnami

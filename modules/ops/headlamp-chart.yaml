@@ -1,0 +1,11 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: headlamp
+  namespace: kube-system
+spec:
+  chartName: headlamp/headlamp
+  version: "0.23.0"
+  namespace: headlamp
+  repository:
+    url: https://headlamp-k8s.github.io/headlamp/

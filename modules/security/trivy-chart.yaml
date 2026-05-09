@@ -1,0 +1,11 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: trivy-operator
+  namespace: kube-system
+spec:
+  chartName: aqua/trivy-operator
+  version: "0.18.2"
+  namespace: trivy-system
+  repository:
+    url: https://aquasecurity.github.io/helm-charts

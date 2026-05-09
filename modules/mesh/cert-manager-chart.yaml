@@ -1,0 +1,13 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: cert-manager
+  namespace: kube-system
+spec:
+  chartName: jetstack/cert-manager
+  version: "v1.13.3"
+  namespace: cert-manager
+  repository:
+    url: https://charts.jetstack.io
+  values: |
+    installCRDs: true

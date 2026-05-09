@@ -1,0 +1,11 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: loki
+  namespace: kube-system
+spec:
+  chartName: grafana/loki-stack
+  version: "2.9.11"
+  namespace: logging
+  repository:
+    url: https://grafana.github.io/helm-charts

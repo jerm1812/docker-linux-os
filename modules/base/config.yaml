@@ -1,0 +1,46 @@
+# Highly Configurable Kairos Configuration
+# Placed in /etc/kairos/config.yaml or split into multiple files under /etc/kairos/
+
+# 1. Base OS Properties
+env:
+  - "KAIROS_ENV=production"
+  - "LOG_LEVEL=info"
+
+# 2. User Management
+users:
+  - name: "KAIROS_USERNAME_PLACEHOLDER"
+    passwd: "KAIROS_PASSWORD_PLACEHOLDER"
+    shell: /bin/bash
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+    ssh_authorized_keys:
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMfakekey... example"
+
+# 3. Network Configuration (Netplan/NetworkManager style)
+# Example: setting up a static IP or bridging
+# network_token: "my-tailscale-or-vpn-token"
+# boot_cmdline: "net.ifnames=0 biosdevname=0"
+
+# 4. K0s / Kubernetes Configuration
+k0s:
+  enabled: true
+  # Arguments for k0s controller
+  args:
+    - --enable-worker
+    - --no-taints
+
+# 5. Custom System Commands (Run at different stages of boot)
+# Stages: rootfs, initramfs, boot, fs, network
+install:
+  auto: true
+  device: "auto"
+  grub_options:
+    default_menu_entry: "Kairos"
+
+# 6. Custom Scripts
+# Run commands during first boot (like cloud-init runcmd)
+runcmd:
+  - echo "System initialized at $(date)" > /var/log/kairos-init.log
+  - mkdir -p /root/.kube
+  - cp /var/lib/k0s/pki/admin.conf /root/.kube/config || true
+  - chmod 600 /root/.kube/config || true
+  - export KUBECONFIG=/root/.kube/config

@@ -1,0 +1,11 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: cloudnative-pg
+  namespace: kube-system
+spec:
+  chartName: cnpg/cloudnative-pg
+  version: "0.20.1"
+  namespace: cnpg-system
+  repository:
+    url: https://cloudnative-pg.github.io/charts

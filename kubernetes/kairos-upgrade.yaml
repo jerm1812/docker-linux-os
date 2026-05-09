@@ -1,0 +1,18 @@
+apiVersion: operator.kairos.io/v1alpha1
+kind: NodeOpUpgrade
+metadata:
+  name: upgrade-kairos-os
+  namespace: kairos
+spec:
+  # Replace with the actual image pushed by GitHub actions
+  image: ghcr.io/jerm1812/docker-linux-os:v1.0.0
+  # Number of nodes to upgrade concurrently
+  concurrency: 1
+  # Set to true to start the upgrade
+  upgradeActive: true
+  # Optionally you can drain nodes before upgrade
+  drain:
+    enabled: true
+    timeout: 300s
+    force: true
+    ignoreDaemonSets: true

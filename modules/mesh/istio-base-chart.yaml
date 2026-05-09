@@ -1,0 +1,11 @@
+apiVersion: helm.k0sproject.io/v1beta1
+kind: Chart
+metadata:
+  name: istio-base
+  namespace: kube-system
+spec:
+  chartName: istio/base
+  version: "1.20.2"
+  namespace: istio-system
+  repository:
+    url: https://istio-release.storage.googleapis.com/charts
