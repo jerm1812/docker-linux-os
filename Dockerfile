@@ -5,6 +5,12 @@ FROM ghcr.io/kairos-io/hadron:${BASE_VERSION}
 # Ensure /etc/kairos directory exists
 RUN mkdir -p /etc/kairos
 
+# Add metadata labels required by AuroraBoot to generate the ISO
+LABEL KAIROS_FLAVOR="hadron"
+LABEL KAIROS_IMAGE_LABEL="${BASE_VERSION}"
+LABEL KAIROS_NAME="kairos-custom"
+LABEL KAIROS_VERSION="${BASE_VERSION}"
+
 # Add custom Kairos configuration
 COPY staging/base/config.yaml /etc/kairos/config.yaml
 COPY staging/manifests/ /var/lib/k0s/manifests/
