@@ -148,10 +148,10 @@ jobs:
 
       - name: Generate Kairos ISO
         run: |
-          # Use the kairos agent running in a container to generate the ISO from the published image
+          # Use the kairos-agent binary embedded inside the OS image we just built to generate the ISO
           docker run -v $PWD:/tmp \
             --privileged \
-            quay.io/kairos/agent:latest \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }} \
             kairos-agent build-iso \
             --output /tmp/custom-os-${{ env.TAG_NAME }}.iso \
             oci:${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }}
