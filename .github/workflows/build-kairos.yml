@@ -121,6 +121,12 @@ jobs:
     needs: build
     # Run if triggered by a tag, a push to main, OR manually triggered
     if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && github.event.inputs.build_iso == 'true')
+    permissions:
+      actions: read
+      contents: write
+      security-events: write
+      id-token: write
+      packages: write
     uses: kairos-io/kairos-factory-action/.github/workflows/reusable-factory.yaml@main
     with:
       version: "auto"
